@@ -5,7 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 
-st.set_page_config(page_title="Breast Cancer ML", layout='wide')
+st.set_page_config(page_title="Breast Cancer ML", layout='wide', initial_sidebar_state="expanded")
 
 #Tải mô hình đã đóng gói
 @st.cache_resource
@@ -26,7 +26,7 @@ def get_user_input():
     #Chọn 5 chỉ số mặc định quan trọng
     main_features = ['mean radius', 'mean texture', 'mean perimeter', 'mean area', 'mean smoothness']
 
-    for name in main_features:
+    for name in feature_names:
         if name in main_features:
             user_data[name] = st.sidebar.slider(
             name.capitalize(),
@@ -79,7 +79,7 @@ with col2:
         'Trung bình': avg_vals.values
     }).set_index('Chỉ số')
 
-    fig, ax = plt.subplot()
+    fig, ax = plt.subplots()
     sns.heatmap(compare_df.T, annot=True, cmap="RdYlGn_r", fmt=".1f", ax=ax)
     st.pyplot(fig)
 

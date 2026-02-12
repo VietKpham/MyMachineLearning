@@ -11,13 +11,13 @@ def train_and_save():
 
     #Huấn luyện mô hình
     model = RandomForestClassifier(n_estimators=100, random_state=42)
-    model.fit =(X, y)
+    model.fit(X, y)
 
     #Đóng gói các thành phần cần thiết
     payload = {
         'model': model,
         'target_names': data.target_names,
-        'feature': data.feature_names,
+        'feature_names': data.feature_names,
         'stats': X.describe()
     }
 
